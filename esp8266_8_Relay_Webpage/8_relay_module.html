@@ -1,0 +1,98 @@
+﻿<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>8_relay module</title>
+
+</head>
+<body>
+
+<canvas id="rly1" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:70px; left:80px;"/></canvas>
+<canvas id="rly2" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:70px; left:160px;"/></canvas>
+<canvas id="rly3" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:70px; left:240px;"/></canvas>
+<canvas id="rly4" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:70px; left:320px;"/></canvas>
+<canvas id="rly5" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:170px; left:80px;"/></canvas>
+<canvas id="rly6" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:170px; left:160px;"/></canvas>
+<canvas id="rly7" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:170px; left:240px;"/></canvas>
+<canvas id="rly8" width="50" height="30" style="border:1px solid #d3d3d3; position:absolute; top:170px; left:320px;"/></canvas>
+
+
+<div id="relayswitch" style="position:absolute; top:40px; left:80px; ">
+<INPUT type="button" value="Relay 1" id="01" class="rlybtn" name="relaybutton" onclick="button1()" >
+<INPUT type="button" value="Relay 2" id="02" class="rlybtn" name="relaybutton" onclick="button2()" style="position:relative; left:17px;" > 
+<INPUT type="button" value="Relay 3" id="03" class="rlybtn" name="relaybutton" onclick="button3()" style="position:relative; left:35px;" >
+<INPUT type="button" value="Relay 4" id="04" class="rlybtn" name="relaybutton" onclick="button4()" style="position:relative; left:54px;" >
+</div>
+
+<div id="relayswitch" style="position:absolute; top:140px; left:80px; ">
+<INPUT type="button" value="Relay 5" id="05" class="rlybtn" name="relaybutton" onclick="button5()" >
+<INPUT type="button" value="Relay 6" id="06" class="rlybtn" name="relaybutton" onclick="button6()" style="position:relative; left:17px;" > 
+<INPUT type="button" value="Relay 7" id="07" class="rlybtn" name="relaybutton" onclick="button7()" style="position:relative; left:35px;" >
+<INPUT type="button" value="Relay 8" id="08" class="rlybtn" name="relaybutton" onclick="button8()" style="position:relative; left:54px;" >
+</div>
+
+
+<div id="cvs1" style="position:absolute; top:75px; left:85px;" >
+<img id="on" class="img1" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img1" src="Off.gif" width="40" height="23">
+</div>
+
+<div id="cvs2" style="position:absolute; top:75px; left:165px;" >
+<img id="on" class="img2" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img2" src="Off.gif" width="40" height="23">
+</div>
+
+<div id="cvs3" style="position:absolute; top:75px; left:245px;" >
+<img id="on" class="img3" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img3" src="Off.gif" width="40" height="23">
+</div>
+
+<div id="cvs4" style="position:absolute; top:75px; left:325px;" >
+<img id="on" class="img4" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img4" src="Off.gif" width="40" height="23">
+</div>
+
+<div id="cvs5" style="position:absolute; top:175px; left:85px;" >
+<img id="on" class="img5" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img5" src="Off.gif" width="40" height="23">
+</div>
+
+<div id="cvs6" style="position:absolute; top:175px; left:165px;" >
+<img id="on" class="img6" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img6" src="Off.gif" width="40" height="23">
+</div>
+
+<div id="cvs7" style="position:absolute; top:175px; left:245px;" >
+<img id="on" class="img7" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img7" src="Off.gif" width="40" height="23">
+</div>
+
+<div id="cvs8" style="position:absolute; top:175px; left:325px;" >
+<img id="on" class="img8" src="ON.gif" width="40" height="23" style="display: none"> 
+<img id="off" class="img8" src="Off.gif" width="40" height="23">
+</div>
+
+
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".rlybtn").click(function(){
+    var p = $(this).attr('id'); 		        // get id value (i.e. 04 for pin04, 05 for pin05, or pin06, ...)
+              			        // send HTTP GET request to the IP address with the parameter "pin" and value "p", then execute the function
+      $.get("http://192.168.100.101:80/", {pin:p});   // execute get request. Please, check and set your own esp_ip_adress
+});
+</script>
+
+
+<script> $( "#01" ).click(function() { $( ".img1" ).toggle(); }); </script>
+<script> $( "#02" ).click(function() { $( ".img2" ).toggle(); }); </script>
+<script> $( "#03" ).click(function() { $( ".img3" ).toggle(); }); </script>
+<script> $( "#04" ).click(function() { $( ".img4" ).toggle(); }); </script>
+<script> $( "#05" ).click(function() { $( ".img5" ).toggle(); }); </script>
+<script> $( "#06" ).click(function() { $( ".img6" ).toggle(); }); </script> 
+<script> $( "#07" ).click(function() { $( ".img7" ).toggle(); }); </script> 
+<script> $( "#08" ).click(function() { $( ".img8" ).toggle(); }); </script> 
+
+</body>
+</html>
